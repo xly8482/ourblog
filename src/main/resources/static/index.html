@@ -2,9 +2,11 @@
 <html lang="zh">
 <head>
 	<!-- Bootstrap -->
-    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="bootstrap/css/bootstrap-combined.min.css" rel="stylesheet">
-    <link href="layui/css/layui.css" rel="stylesheet" >
+    <link href="plugin/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="plugin/bootstrap/css/bootstrap-combined.min.css" rel="stylesheet">
+    <link href="plugin/layui/css/layui.css" rel="stylesheet" >
+    <!-- include summernote css -->
+	<link href="plugin/summernote/summernote.css" rel="stylesheet">
 	<link href="css/main.css" rel="stylesheet">
 </head>
 <body>
@@ -14,13 +16,13 @@
 				<h1>我的博客</h1>
 				<ul class="nav nav-tabs">
 					<li class="active">
-						<a href="#">首页</a>
+						<a href="#home" data-toggle="tab">首页</a>
 					</li>
 					<li>
-						<a href="#" onclick="writeArticle()">发文</a>
+						<a href="#writeArticle" data-toggle="tab">发文</a>
 					</li>
 					<li>
-						<a href="#" onclick="info();">信息</a>
+						<a href="#info" data-toggle="tab">信息</a>
 					</li>
 					<!--<li class="dropdown pull-right">-->
 						 <!--<a href="#" data-toggle="dropdown" class="dropdown-toggle">下拉<strong class="caret"></strong></a>-->
@@ -42,56 +44,98 @@
 						<!--</ul>-->
 					<!--</li>-->
 				</ul>
-				<ul class="thumbnails">
-					<li class="span4">
-						<div class="thumbnail">
-							<img alt="300x200" src="img/people.jpg" />
-							<div class="caption">
-								<h3>
-									冯诺尔曼结构
-								</h3>
-								<p>
-									也称普林斯顿结构，是一种将程序指令存储器和数据存储器合并在一起的存储器结构。程序指令存储地址和数据存储地址指向同一个存储器的不同物理位置。
-								</p>
-								<p>
-									<a class="btn btn-primary" href="#">浏览</a> <a class="btn" href="#">分享</a>
-								</p>
-							</div>
-						</div>
-					</li>
-					<li class="span4">
-						<div class="thumbnail">
-							<img alt="300x200" src="img/city.jpg" />
-							<div class="caption">
-								<h3>
-									哈佛结构
-								</h3>
-								<p>
-									哈佛结构是一种将程序指令存储和数据存储分开的存储器结构，它的主要特点是将程序和数据存储在不同的存储空间中，进行独立编址。
-								</p>
-								<p>
-									<a class="btn btn-primary" href="#">浏览</a> <a class="btn" href="#">分享</a>
-								</p>
-							</div>
-						</div>
-					</li>
-					<li class="span4">
-						<div class="thumbnail">
-							<img alt="300x200" src="img/sports.jpg" />
-							<div class="caption">
-								<h3>
-									改进型哈佛结构
-								</h3>
-								<p>
-									改进型的哈佛结构具有一条独立的地址总线和一条独立的数据总线，两条总线由程序存储器和数据存储器分时复用，使结构更紧凑。
-								</p>
-								<p>
-									<a class="btn btn-primary" href="#">浏览</a> <a class="btn" href="#">分享</a>
-								</p>
-							</div>
-						</div>
-					</li>
-				</ul>
+				
+				<div class="tab-content">  
+				    <div class="tab-pane active" id="home">
+				    	<!-- home index -->
+				    	<ul class="thumbnails">
+							<li class="span4">
+								<div class="thumbnail">
+									<img alt="300x200" src="img/people.jpg" />
+									<div class="caption">
+										<h3>
+											冯诺尔曼结构
+										</h3>
+										<p>
+											也称普林斯顿结构，是一种将程序指令存储器和数据存储器合并在一起的存储器结构。程序指令存储地址和数据存储地址指向同一个存储器的不同物理位置。
+										</p>
+										<p>
+											<a class="btn btn-primary" href="#">浏览</a> <a class="btn" href="#">分享</a>
+										</p>
+									</div>
+								</div>
+							</li>
+							<li class="span4">
+								<div class="thumbnail">
+									<img alt="300x200" src="img/city.jpg" />
+									<div class="caption">
+										<h3>
+											哈佛结构
+										</h3>
+										<p>
+											哈佛结构是一种将程序指令存储和数据存储分开的存储器结构，它的主要特点是将程序和数据存储在不同的存储空间中，进行独立编址。
+										</p>
+										<p>
+											<a class="btn btn-primary" href="#">浏览</a> <a class="btn" href="#">分享</a>
+										</p>
+									</div>
+								</div>
+							</li>
+							<li class="span4">
+								<div class="thumbnail">
+									<img alt="300x200" src="img/sports.jpg" />
+									<div class="caption">
+										<h3>
+											改进型哈佛结构
+										</h3>
+										<p>
+											改进型的哈佛结构具有一条独立的地址总线和一条独立的数据总线，两条总线由程序存储器和数据存储器分时复用，使结构更紧凑。
+										</p>
+										<p>
+											<a class="btn btn-primary" href="#">浏览</a> <a class="btn" href="#">分享</a>
+										</p>
+									</div>
+								</div>
+							</li>
+						</ul>
+				    </div>  
+				    
+				    <div class="tab-pane" id="writeArticle">
+				    	  <button id="btnSubmit" class="btn btn-primary btn-lg submitbtn">提交</button>
+						  <fieldset>
+						    <legend>标题</legend>
+						    <input type="text" class="title-input" placeholder="输入文章标题">
+						    <legend>內容</legend>
+						    <textarea id="summernote" name="editordata"></textarea>
+						  </fieldset>
+				    </div>  
+				    <div class="tab-pane" id="info">
+				    	<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">  
+						    Launch demo modal  
+						</button> 
+						
+				    	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">  
+						    <div class="modal-dialog" role="document">  
+						        <div class="modal-content">  
+						            <div class="modal-header">  
+						                <button type="button" class="close" data-dismiss="modal" aria-label="Close">  
+						                    <span aria-hidden="true">×</span>  
+						                </button>  
+						                <h4 class="modal-title" id="myModalLabel">Modal title</h4>  
+						            </div>  
+						            <div class="modal-body">  
+						                <p>One fine body…</p>  
+						            </div>  
+						            <div class="modal-footer">  
+						                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>  
+						                <button type="button" class="btn btn-primary">Save</button>  
+						            </div>  
+						        </div>  
+						    </div>  
+						</div> 
+						
+				    </div>  
+				</div>
 			</div>
 		</div>
 	</div>
@@ -100,7 +144,8 @@
 <!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
 <script src="js/jquery-3.2.1.js"></script>
 <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
-<script src="bootstrap/js/bootstrap.min.js"></script>
-<script src="bootstrap/js/bootstrap-table.js"></script>
-<script src="layui/layui.all.js"></script>
+<script src="plugin/bootstrap/js/bootstrap.min.js"></script>
+<script src="plugin/bootstrap/js/bootstrap-table.js"></script>
+<script src="plugin/layui/layui.all.js"></script>
+<script src="plugin/summernote/summernote.js"></script>
 <script src="js/index.js"></script>

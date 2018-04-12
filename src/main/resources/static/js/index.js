@@ -1,9 +1,15 @@
 var layer = layui.layer;
 
-function info(){
-    layer.msg('未完成！');
-}
+$(document).ready(function() {
+	$('#summernote').summernote({
+		height: 500
+	});
+	
+	
+	$("#btnSubmit").on('click', function(){
+		var url = 'api/article/add';
+		
+		
+	});
+});
 
-function writeArticle(){
-    layer.msg('未完成！');
-}

@@ -6,3 +6,13 @@ h1 {
 	font-weight: 500;
 	line-height: 70px;
 }
+
+.title-input {
+	height: 38px !important;
+    width: 100%;
+}
+    
+.submitbtn {
+	position: fixed;
+	right: 1%;
+}
