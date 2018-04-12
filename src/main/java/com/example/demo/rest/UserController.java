@@ -26,7 +26,7 @@ public class UserController
      */
     @GetMapping("/listUser")
     @ResponseBody
-    public List<UserEntity> createPPaperFolder(String userName)
+    public List<UserEntity> listUser(String userName)
     {
         return userService.listUser(userName);
     }

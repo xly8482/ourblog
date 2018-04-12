@@ -43,7 +43,6 @@ public class BaseDaoImpl<T> implements BaseDao<T>
     private Field[] getField(Class<T> entityClass)
     {
         Field[] fields = entityClass.getDeclaredFields();
-        // 取消每个属性的安全检查
         for (Field f : fields)
         {
             f.setAccessible(true);
@@ -99,7 +98,6 @@ public class BaseDaoImpl<T> implements BaseDao<T>
             Class<T> entityClass = this.getClazz();
             Field[] fields = this.getField(entityClass);
 
-            // 获取传入的每个对象的所有类成员属性值
             Query query = null;
             Update update = new Update();
             for (int i = 0; i < fields.length; i++)
@@ -121,7 +119,6 @@ public class BaseDaoImpl<T> implements BaseDao<T>
 
             if (query != null)
             {
-                // 更新查询返回结果集的第一条
                 return (T)mongoTemplate.updateFirst(query, update, determineEntityCollectionName(entityClass));
             }
             else
@@ -173,7 +170,6 @@ public class BaseDaoImpl<T> implements BaseDao<T>
             Class<T> entityClass = this.getClazz();
             Field[] fields = this.getField(entityClass);
 
-            // 获取传入的每个对象的所有类成员属性值
             Query query = null;
             for (int i = 0; i < fields.length; i++)
             {
