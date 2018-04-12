@@ -67,26 +67,6 @@ public class BaseDaoImpl<T> implements BaseDao<T>
     {
         try
         {
-            // Class<T> entityClass = this.getClazz();
-            // Field[] fields = this.getField(entityClass);
-            //
-            // boolean ifHasId = false;
-            // for (int i = 0; i < fields.length; i++)
-            // {
-            //
-            // if (fields[i].getName().equals("id"))
-            // {
-            // ifHasId = true;
-            //
-            // if (fields[i].get(t) == null)
-            // {
-            // fields[i].set(t, value);
-            // }
-            // }
-            //
-            // System.out.println(fields[i].getName() + ":" + fields[i].get(t));
-            // }
-
             mongoTemplate.save(t);
             return t;
 
@@ -137,7 +117,6 @@ public class BaseDaoImpl<T> implements BaseDao<T>
                     update.set(fields[i].getName(), fields[i].get(t));
                 }
 
-                System.out.println(fields[i].getName() + ":" + fields[i].get(t));
             }
 
             if (query != null)
