@@ -2,22 +2,24 @@ package com.example.demo.entity;
 
 import java.io.Serializable;
 
+import org.bson.types.ObjectId;
+
 public class UserEntity implements Serializable
 {
     private static final long serialVersionUID = -3258839839160856613L;
 
-    private Long id;
+    private ObjectId id;
 
     private String userName;
 
     private String passWord;
 
-    public Long getId()
+    public Object getId()
     {
         return id;
     }
 
-    public void setId(Long id)
+    public void setId(ObjectId id)
     {
         this.id = id;
     }

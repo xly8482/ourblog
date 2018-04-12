@@ -2,22 +2,13 @@ package com.example.demo.dao;
 
 import java.util.List;
 
-import org.springframework.util.StringUtils;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.mongodb.core.MongoTemplate;
-import org.springframework.data.mongodb.core.query.Criteria;
-import org.springframework.data.mongodb.core.query.Query;
-import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Component;
 
 import com.example.demo.entity.UserEntity;
 
 @Component
-public class UserDao
+public class UserDao extends BaseDaoImpl<UserEntity>
 {
-    @Autowired
-    private MongoTemplate mongoTemplate;
-
     /**
      * 创建对象
      * 
@@ -25,7 +16,7 @@ public class UserDao
      */
     public void saveUser(UserEntity user)
     {
-        mongoTemplate.save(user);
+        this.save(user);
     }
 
     /**
@@ -36,12 +27,9 @@ public class UserDao
      */
     public List<UserEntity> findUserByUserName(String userName)
     {
-        Query query = new Query();
-        if(!StringUtils.isEmpty(userName)) {
-            query.addCriteria(Criteria.where("userName").is(userName));
-        }
-        
-        return mongoTemplate.find(query, UserEntity.class);
+        UserEntity ue = new UserEntity();
+        ue.setUserName(userName);
+        return this.select(ue);
     }
 
     /**
@@ -51,12 +39,7 @@ public class UserDao
      */
     public void updateUser(UserEntity user)
     {
-        Query query = new Query(Criteria.where("id").is(user.getId()));
-        Update update = new Update().set("userName", user.getUserName()).set("passWord", user.getPassWord());
-        // 更新查询返回结果集的第一条
-        mongoTemplate.updateFirst(query, update, UserEntity.class);
-        // 更新查询返回结果集的所有
-        // mongoTemplate.updateMulti(query,update,UserEntity.class);
+        this.update(user);
     }
 
     /**
@@ -64,9 +47,8 @@ public class UserDao
      * 
      * @param id
      */
-    public void deleteUserById(Long id)
+    public void deleteUserById(Object id)
     {
-        Query query = new Query(Criteria.where("id").is(id));
-        mongoTemplate.remove(query, UserEntity.class);
+        this.deleteById(id);
     }
 }

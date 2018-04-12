@@ -21,16 +21,11 @@ public class UserDaoTest
     @Test
     public void testSaveUser() throws Exception
     {
-        UserEntity user = new UserEntity();
-        // user.setId(2l);
-        // user.setUserName("小明");
-        // user.setPassWord("fffooo123");
-        // userDao.saveUser(user);
+        UserEntity user = null;
 
-        for (int i = 0; i < 10000; i++)
+        for (int i = 0; i < 10; i++)
         {
             user = new UserEntity();
-            user.setId(Long.parseLong(i + ""));
             user.setUserName("小明" + i);
             user.setPassWord("xiaominghenshuai");
             userDao.saveUser(user);
@@ -38,26 +33,33 @@ public class UserDaoTest
 
     }
 
-    // @Test
-    // public void findUserByUserName()
-    // {
-    // List<UserEntity> user = userDao.findUserByUserName("小明");
-    // System.out.println("user is " + user);
-    // }
-    //
-    // @Test
-    // public void updateUser()
-    // {
-    // UserEntity user = new UserEntity();
-    // user.setId(2l);
-    // user.setUserName("天空");
-    // user.setPassWord("fffxxxx");
-    // userDao.updateUser(user);
-    // }
-    //
+    @Test
+    public void findUserByUserName()
+    {
+        List<UserEntity> user = userDao.findUserByUserName("小明0");
+        System.out.println("user is " + user);
+    }
+
+    @Test
+    public void updateUser()
+    {
+        List<UserEntity> userList = userDao.findUserByUserName("小明0");
+
+        for (UserEntity user : userList)
+        {
+            user.setUserName("天空");
+            user.setPassWord("fffxxxx");
+            userDao.updateUser(user);
+        }
+    }
+
     // @Test
     // public void deleteUserById()
     // {
-    // userDao.deleteUserById(1l);
+    // List<UserEntity> userList = userDao.selectAll();
+    // for (UserEntity user : userList)
+    // {
+    // userDao.deleteUserById(user.getId());
+    // }
     // }
 }
