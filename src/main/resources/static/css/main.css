@@ -16,3 +16,9 @@ h1 {
 	position: fixed;
 	right: 1%;
 }
+
+.caption {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}

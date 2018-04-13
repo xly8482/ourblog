@@ -48,8 +48,8 @@
 				<div class="tab-content">  
 				    <div class="tab-pane active" id="home">
 				    	<!-- home index -->
-				    	<ul class="thumbnails">
-							<li class="span4">
+				    	<ul id="articleList" class="thumbnails">
+							<!--<li class="span4">
 								<div class="thumbnail">
 									<img alt="300x200" src="img/people.jpg" />
 									<div class="caption">
@@ -64,39 +64,8 @@
 										</p>
 									</div>
 								</div>
-							</li>
-							<li class="span4">
-								<div class="thumbnail">
-									<img alt="300x200" src="img/city.jpg" />
-									<div class="caption">
-										<h3>
-											哈佛结构
-										</h3>
-										<p>
-											哈佛结构是一种将程序指令存储和数据存储分开的存储器结构，它的主要特点是将程序和数据存储在不同的存储空间中，进行独立编址。
-										</p>
-										<p>
-											<a class="btn btn-primary" href="#">浏览</a> <a class="btn" href="#">分享</a>
-										</p>
-									</div>
-								</div>
-							</li>
-							<li class="span4">
-								<div class="thumbnail">
-									<img alt="300x200" src="img/sports.jpg" />
-									<div class="caption">
-										<h3>
-											改进型哈佛结构
-										</h3>
-										<p>
-											改进型的哈佛结构具有一条独立的地址总线和一条独立的数据总线，两条总线由程序存储器和数据存储器分时复用，使结构更紧凑。
-										</p>
-										<p>
-											<a class="btn btn-primary" href="#">浏览</a> <a class="btn" href="#">分享</a>
-										</p>
-									</div>
-								</div>
-							</li>
+							</li> -->
+							
 						</ul>
 				    </div>  
 				    
@@ -104,7 +73,7 @@
 				    	  <button id="btnSubmit" class="btn btn-primary btn-lg submitbtn">提交</button>
 						  <fieldset>
 						    <legend>标题</legend>
-						    <input type="text" class="title-input" placeholder="输入文章标题">
+						    <input type="text" id="title" class="title-input" placeholder="输入文章标题">
 						    <legend>內容</legend>
 						    <textarea id="summernote" name="editordata"></textarea>
 						  </fieldset>

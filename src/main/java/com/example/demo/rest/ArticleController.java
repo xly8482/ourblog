@@ -1,5 +1,7 @@
 package com.example.demo.rest;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,13 +22,26 @@ public class ArticleController
     /**
      * 新增博客文章
      * 
+     * @param article
      * @return
      */
     @PostMapping("/add")
     @ResponseBody
-    public String createPPaperFolder(ArticleEntity article)
+    public ArticleEntity addArticle(ArticleEntity article)
     {
         articleService.addArticle(article);
-        return null;
+        return article;
+    }
+
+    /**
+     * 查询博客文章
+     * 
+     * @return
+     */
+    @PostMapping("/list")
+    @ResponseBody
+    public List<ArticleEntity> listArticle(String userId)
+    {
+        return articleService.listMyArticle(userId);
     }
 }
