@@ -1,5 +1,6 @@
 var layer = layui.layer;
 var imgMax = 3;
+var strArr = [];
 function imgErr(obj){
     var imgIndex = parseInt(Math.random()*imgMax+1);
     obj.src="img/default/" + imgIndex + ".jpg";
@@ -28,6 +29,7 @@ layui.use('laypage', function(){
                   // obj包含了当前分页的所有参数，比如：
                   // console.log(obj.curr); // 得到当前页，以便向服务端请求对应页的数据。
                   // console.log(obj.limit); // 得到每页显示的条数
+                  strArr = [];
                   
                   var htm = '';
                   var curNo = (obj.curr-1)*obj.limit;
@@ -49,10 +51,12 @@ layui.use('laypage', function(){
                       htm += '<div class="caption">';
                       htm += '<h3>' + data[i].title + '</h3>';
                       htm += '<p>' + data[i].context + '</p>';
-                      htm += '<p><a class="btn btn-primary" href="#">浏览</a> <a class="btn" href="#">分享</a></p>';
+                      htm += '</div><div><a class="btn btn-primary" href="#" data-toggle="modal" data-target="#myModal" data-objindex='+i+'>浏览</a> <a class="btn" href="#">分享</a>';
                       htm += '</div>';
                       htm += '</div>';
                       htm += '</li>';
+                      
+                      strArr.push(data[i]);
                   }
                   
                   $("#articleList").html(htm);
@@ -100,6 +104,17 @@ $(document).ready(function() {
             }
 	    });
 	});
-	
 });
+
+$('#myModal').on('shown.bs.modal', function (e) {
+    // 这里的btn就是触发元素，即你点击的删除按钮
+    var btn = $(e.relatedTarget),
+        index = btn.data("objindex"); 
+    // console.log(e);
+    console.log(strArr[index]);
+    var data = strArr[index];
+    
+    $('.modal-body #titleDetail').html(data.title);
+    $('.modal-body #contentDetail').html(data.context);
+})
 

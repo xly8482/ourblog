@@ -66,33 +66,42 @@
 				    	<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">  
 						    Launch demo modal  
 						</button> 
-						
-				    	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">  
-						    <div class="modal-dialog" role="document">  
-						        <div class="modal-content">  
-						            <div class="modal-header">  
-						                <button type="button" class="close" data-dismiss="modal" aria-label="Close">  
-						                    <span aria-hidden="true">×</span>  
-						                </button>  
-						                <h4 class="modal-title" id="myModalLabel">Modal title</h4>  
-						            </div>  
-						            <div class="modal-body">  
-						                <p>One fine body…</p>  
-						            </div>  
-						            <div class="modal-footer">  
-						                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>  
-						                <button type="button" class="btn btn-primary">Save</button>  
-						            </div>  
-						        </div>  
-						    </div>  
-						</div> 
-						
 				    </div>  
 				</div>
 			</div>
 		</div>
 	</div>
 </body>
+
+<!-- detail Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document" style="width:80%">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">详情</h4>
+      </div>
+      <div class="modal-body">
+        <div class="container-fluid">
+			<div class="row-fluid">
+				<div class="span12">
+					<h3 id="titleDetail">
+						
+					</h3>
+					<p id="contentDetail">
+						
+					</p>
+				</div>
+			</div>
+		</div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
 <script src="js/jquery-3.2.1.js"></script>
