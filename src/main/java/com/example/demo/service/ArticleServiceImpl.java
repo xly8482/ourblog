@@ -5,9 +5,11 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import com.example.demo.dao.ArticleDao;
 import com.example.demo.entity.ArticleEntity;
+import com.example.demo.util.ClassTransformUtil;
 
 @Service
 public class ArticleServiceImpl implements ArticleService
@@ -29,7 +31,23 @@ public class ArticleServiceImpl implements ArticleService
     {
         return articleDao.selectAll();
     }
-    
-    
+
+    @Override
+    public void updateArticle(ArticleEntity article)
+    {
+        ArticleEntity oldArticle = articleDao.getById(article.getId());
+        ClassTransformUtil.copy(oldArticle, article, new String[]{"id", "addtime", "userId"});
+        oldArticle.setUpdatetime(new Date());
+        articleDao.save(article);
+    }
+
+    @Override
+    public void deleteArticle(String id)
+    {
+        if (!StringUtils.isEmpty(id))
+        {
+            articleDao.deleteById(id);
+        }
+    }
 
 }

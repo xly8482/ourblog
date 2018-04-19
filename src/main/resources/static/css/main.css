@@ -1,10 +1,20 @@
 body {
+	overflow-x: hidden; 
+	overflow-y: auto;
+    background-color: #9e9e9e0f;
 }
 
 h1 {
-	font-style: italic;
-	font-weight: 500;
-	line-height: 70px;
+    font-style: italic;
+    font-weight: 500;
+    font-family: STSong;
+    line-height: 70px;
+    background-color: #ffffff9e;
+    color: #2196F3;
+    margin: 0px -20px 10px -20px;
+    width: 110%;
+    padding: 0px 20px;
+    border-bottom: 1px solid #00000036;
 }
 
 .title-input {
@@ -22,4 +32,16 @@ h1 {
     white-space: nowrap;
     text-overflow: ellipsis;
     height: 74px;
+}
+
+.thumbnail > img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: 220px;
+    width: 100%;
+}
+
+.btn {
+    margin: 8px 6px;
 }

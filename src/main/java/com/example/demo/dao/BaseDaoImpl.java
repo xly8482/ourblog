@@ -5,6 +5,8 @@ import java.lang.reflect.ParameterizedType;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
@@ -138,7 +140,10 @@ public class BaseDaoImpl<T> implements BaseDao<T>
     @Override
     public List<T> selectAll()
     {
-        return mongoTemplate.findAll(this.getClazz());
+        Query query = new Query();
+        // 按照objectId逆序排列
+        query.with(new Sort(Direction.DESC, "_id"));
+        return mongoTemplate.find(query, this.getClazz());
     }
 
     @Override

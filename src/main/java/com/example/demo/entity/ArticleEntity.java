@@ -13,7 +13,7 @@ public class ArticleEntity implements Serializable
      */
     private static final long serialVersionUID = 6113169264584616475L;
 
-    private ObjectId id;
+    private String id;
 
     private String title; // 标题
 
@@ -27,14 +27,14 @@ public class ArticleEntity implements Serializable
 
     private Date updatetime; // 修改时间
 
-    public ObjectId getId()
+    public String getId()
     {
         return id;
     }
 
     public void setId(ObjectId id)
     {
-        this.id = id;
+        this.id = id.toHexString();
     }
 
     public String getTitle()

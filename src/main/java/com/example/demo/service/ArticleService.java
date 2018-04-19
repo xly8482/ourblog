@@ -21,4 +21,18 @@ public interface ArticleService
      * @return
      */
     public List<ArticleEntity> listMyArticle(String userId);
+    
+    /**
+     * 修改文章
+     * 
+     * @param article
+     */
+    public void updateArticle(ArticleEntity article);
+    
+    /**
+     * 删除文章
+     * 
+     * @param article
+     */
+    public void deleteArticle(String id);
 }
