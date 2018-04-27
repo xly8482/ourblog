@@ -46,6 +46,11 @@ h1 {
     height: 74px;
 }
 
+.caption ul {
+	position: inherit!important;
+}
+    
+
 .thumbnail > img {
     display: block;
     margin-left: auto;

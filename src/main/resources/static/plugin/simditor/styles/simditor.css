@@ -659,6 +659,11 @@
   padding: 0 0 0 40px;
   line-height: 1.6;
 }
+.simditor .pre-numbering {
+    margin: 10px 0px!important;
+    padding: 0!important;
+    line-height: 20px!important;
+}
 .simditor .simditor-body ul li, .simditor .simditor-body ol li, .editor-style ul li, .editor-style ol li {
   list-style-type: inherit;
 }
@@ -692,10 +697,10 @@
   font-family: 'monaco', 'Consolas', "Liberation Mono", Courier, monospace;
 }
 .simditor .simditor-body pre, .editor-style pre {
-  padding: 10px 5px 10px 10px;
+  padding: 10px 5px 10px 60px;;
   margin: 15px 0;
   display: block;
-  line-height: 18px;
+  line-height: 20px;
   background: #F0F0F0;
   border-radius: 3px;
   font-size: 13px;
@@ -703,6 +708,7 @@
   white-space: pre;
   word-wrap: normal;
   overflow-x: auto;
+  position: relative;
 }
 .simditor .simditor-body pre code, .editor-style pre code {
   display: block;
