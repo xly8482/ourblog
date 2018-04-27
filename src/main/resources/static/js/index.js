@@ -2,6 +2,7 @@ var layer = layui.layer;
 var imgMax = 6;
 var strArr = [];
 var currPage = 0;
+var editor, editorUp, editorDetail;
 function imgErr(obj){
     var imgIndex = parseInt(Math.random()*imgMax+1);
     obj.src="img/default/" + imgIndex + ".jpg";
@@ -83,20 +84,48 @@ layui.use('laypage', function(){
     }
     
     searchPage(currPage);
-    
-    $('#summernote').summernote({
-        height: 500
+    Simditor.locale = 'zh-CN';//设置中文
+    editor = new Simditor({
+        textarea: $('#editor'),
+        //optional options
+        toolbar: ['title', 'bold', 'italic', 'underline', 'strikethrough', 'fontScale', 'color', 'ol',         
+            'ul', 'blockquote', 'code', 'table', 'link', 'image', 'hr', 'indent', 'outdent', 'alignment'],
+        codeLanguages: [{ name: 'Bash', value: 'bash' }, { name: 'C++', value: 'c++' }, { name: 'C#', value: 'cs' }, { name: 'CSS', value: 'css' },
+             { name: 'Erlang', value: 'erlang' }, { name: 'Less', value: 'less' }, { name: 'Sass', value: 'sass' },  { name: 'Diff', value: 'diff' },
+             { name: 'CoffeeScript', value: 'coffeescript' }, { name: 'HTML,XML', value: 'html' }, { name: 'JSON', value: 'json' },
+             { name: 'Java', value: 'java' }, { name: 'JavaScript', value: 'js' }, { name: 'Markdown', value: 'markdown' },
+             { name: 'Objective C', value: 'oc' }, { name: 'PHP', value: 'php' }, { name: 'Perl', value: 'parl' },
+             { name: 'Python', value: 'python' }, { name: 'Ruby', value: 'ruby' }, { name: 'SQL', value: 'sql'}]
     });
     
-    $('#summernoteUp').summernote({
-        height: 500
+    editorUp = new Simditor({
+        textarea: $('#editorUp'),
+        //optional options
+        toolbar: ['title', 'bold', 'italic', 'underline', 'strikethrough', 'fontScale', 'color', 'ol',         
+            'ul', 'blockquote', 'code', 'table', 'link', 'image', 'hr', 'indent', 'outdent', 'alignment'],
+        codeLanguages: [{ name: 'Bash', value: 'bash' }, { name: 'C++', value: 'c++' }, { name: 'C#', value: 'cs' }, { name: 'CSS', value: 'css' },
+             { name: 'Erlang', value: 'erlang' }, { name: 'Less', value: 'less' }, { name: 'Sass', value: 'sass' },  { name: 'Diff', value: 'diff' },
+             { name: 'CoffeeScript', value: 'coffeescript' }, { name: 'HTML,XML', value: 'html' }, { name: 'JSON', value: 'json' },
+             { name: 'Java', value: 'java' }, { name: 'JavaScript', value: 'js' }, { name: 'Markdown', value: 'markdown' },
+             { name: 'Objective C', value: 'oc' }, { name: 'PHP', value: 'php' }, { name: 'Perl', value: 'parl' },
+             { name: 'Python', value: 'python' }, { name: 'Ruby', value: 'ruby' }, { name: 'SQL', value: 'sql'}]
+    });
+    
+    editorDetail = new Simditor({
+        textarea: $('#editorDetail'),
+        codeLanguages: [{ name: 'Bash', value: 'bash' }, { name: 'C++', value: 'c++' }, { name: 'C#', value: 'cs' }, { name: 'CSS', value: 'css' },
+             { name: 'Erlang', value: 'erlang' }, { name: 'Less', value: 'less' }, { name: 'Sass', value: 'sass' },  { name: 'Diff', value: 'diff' },
+             { name: 'CoffeeScript', value: 'coffeescript' }, { name: 'HTML,XML', value: 'html' }, { name: 'JSON', value: 'json' },
+             { name: 'Java', value: 'java' }, { name: 'JavaScript', value: 'js' }, { name: 'Markdown', value: 'markdown' },
+             { name: 'Objective C', value: 'oc' }, { name: 'PHP', value: 'php' }, { name: 'Perl', value: 'parl' },
+             { name: 'Python', value: 'python' }, { name: 'Ruby', value: 'ruby' }, { name: 'SQL', value: 'sql'}]
     });
     
     $("#btnSubmit").on('click', function(){
         var url = 'api/article/add';
         var data = {
             "title": $("#title").val(),
-            "context": $("#summernote").val()
+            "context": editor.getValue()
         };
         
         $.ajax({
@@ -121,7 +150,7 @@ layui.use('laypage', function(){
         var data = {
             "id": $("#objidUp").val(),
             "title": $("#titleUp").val(),
-            "context": $("#summernoteUp").val()
+            "context": editorUp.getValue()
         };
         
         $.ajax({
@@ -180,7 +209,9 @@ $('#myModal').on('show.bs.modal', function (e) {
     var data = strArr[index];
     
     $('#myModal .modal-body #titleDetail').html(data.title);
-    $('#myModal .modal-body #contentDetail').html(data.context);
+    editorDetail.setValue(data.context);
+    $('#myModal .simditor').find(".simditor-toolbar").hide();
+    $('#myModal .simditor').find(".simditor-body").attr("contenteditable", "false");
 })
 
 $('#myUpModal').on('show.bs.modal', function (e) {
@@ -192,6 +223,6 @@ $('#myUpModal').on('show.bs.modal', function (e) {
     
     $('#myUpModal .modal-body #objidUp').val(data.id);
     $('#myUpModal .modal-body #titleUp').val(data.title);
-    $('#myUpModal .modal-body #summernoteUp').summernote('code', data.context);
+    editorUp.setValue(data.context);
 })
 

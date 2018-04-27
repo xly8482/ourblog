@@ -5,8 +5,8 @@
     <link href="plugin/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="plugin/bootstrap/css/bootstrap-combined.min.css" rel="stylesheet">
     <link href="plugin/layui/css/layui.css" rel="stylesheet" >
-    <!-- include summernote css -->
-	<link href="plugin/summernote/summernote.css" rel="stylesheet">
+    <!-- include simditor css -->
+    <link rel="stylesheet" type="text/css" href="plugin/simditor/styles/simditor.css" />
 	<link href="css/main.css" rel="stylesheet">
 </head>
 <body>
@@ -59,7 +59,7 @@
 						    <legend>标题</legend>
 						    <input type="text" id="title" class="title-input" placeholder="输入文章标题">
 						    <legend>內容</legend>
-						    <textarea id="summernote" name="editordata"></textarea>
+						    <textarea id="editor" name="editordata" autofocus></textarea>
 						  </fieldset>
 				    </div>  
 				    <div class="tab-pane" id="info">
@@ -85,8 +85,7 @@
 				<div class="span12">
 					<h3 id="titleDetail">
 					</h3>
-					<p id="contentDetail">
-					</p>
+					<textarea id="editorDetail" name="editorDetail" autofocus></textarea>
 				</div>
 			</div>
 		</div>
@@ -118,7 +117,7 @@
 						    <legend>标题</legend>
 						    <input type="text" id="titleUp" class="title-input" placeholder="输入文章标题">
 						    <legend>內容</legend>
-						    <textarea id="summernoteUp" name="editordataUp"></textarea>
+						    <textarea id="editorUp" name="editordataUp" autofocus></textarea>
 						  </fieldset>
 				    </div>  
 				</div>
@@ -129,11 +128,15 @@
   </div>
 </div>
 
+<script type="text/javascript" src="plugin/simditor/scripts/jquery.min.js"></script>
+<script type="text/javascript" src="plugin/simditor/scripts/module.js"></script>
+<script type="text/javascript" src="plugin/simditor/scripts/hotkeys.js"></script>
+<script type="text/javascript" src="plugin/simditor/scripts/uploader.js"></script>
+<script type="text/javascript" src="plugin/simditor/scripts/simditor.js"></script>
 <!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
 <script src="js/jquery-3.2.1.js"></script>
 <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
 <script src="plugin/bootstrap/js/bootstrap.min.js"></script>
 <script src="plugin/bootstrap/js/bootstrap-table.js"></script>
 <script src="plugin/layui/layui.all.js"></script>
-<script src="plugin/summernote/summernote.js"></script>
 <script src="js/index.js"></script>
