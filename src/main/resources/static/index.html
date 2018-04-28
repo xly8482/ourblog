@@ -54,16 +54,17 @@
 				    </div>  
 				    
 				    <div class="tab-pane" id="writeArticle">
-				    	  <button id="btnSubmit" class="btn btn-primary btn-lg submitbtn">提交</button>
+				    	  <span id="btnSubmit" class="glyphicon glyphicon-floppy-disk submitbtn" aria-hidden="true" title="提交"></span>
 						  <fieldset>
-						    <legend>标题</legend>
 						    <input type="text" id="title" class="title-input" placeholder="输入文章标题">
-						    <legend>內容</legend>
 						    <textarea id="editor" name="editordata" autofocus></textarea>
 						  </fieldset>
 				    </div>  
 				    <div class="tab-pane" id="info">
-				    	 
+			    	 	<div id="palyArea" style="border:1px solid #000;overflow: hidden;">
+							<canvas id="player1" style="width:60;height:60;"></canvas>
+							<canvas id="bullet1" style="width:10;height:10;"></canvas>
+						</div>
 				    </div>  
 				</div>
 			</div>
@@ -100,6 +101,7 @@
 
 <!-- update Modal -->
 <div class="modal fade" id="myUpModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <span id="btnSubmitUp" class="glyphicon glyphicon-floppy-disk submitbtn" aria-hidden="true" title="提交"></span>
   <div class="modal-dialog" role="document" style="width:80%">
     <div class="modal-content">
       <div class="modal-header">
@@ -111,14 +113,11 @@
 			<div class="row-fluid">
 				<div class="span12">
 					<div class="tab-pane" id="writeArticleUp">
-				    	  <button id="btnSubmitUp" class="btn btn-primary btn-lg submitbtn">提交</button>
-				    	  <input type="hidden" id="objidUp" />
-						  <fieldset>
-						    <legend>标题</legend>
-						    <input type="text" id="titleUp" class="title-input" placeholder="输入文章标题">
-						    <legend>內容</legend>
-						    <textarea id="editorUp" name="editordataUp" autofocus></textarea>
-						  </fieldset>
+			    	  <input type="hidden" id="objidUp" />
+					  <fieldset>
+					    <input type="text" id="titleUp" class="title-input" placeholder="输入文章标题">
+					    <textarea id="editorUp" name="editordataUp" autofocus></textarea>
+					  </fieldset>
 				    </div>  
 				</div>
 			</div>
@@ -140,3 +139,4 @@
 <script src="plugin/bootstrap/js/bootstrap-table.js"></script>
 <script src="plugin/layui/layui.all.js"></script>
 <script src="js/index.js"></script>
+<script src="js/play.js"></script>

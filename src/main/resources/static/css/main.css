@@ -23,8 +23,20 @@ h1 {
 }
     
 .submitbtn {
-	position: fixed;
-	right: 1%;
+    position: fixed;
+    z-index: 1000;
+    font-size: 26px;
+    color: #fff;
+    left: 90%;
+    top: 94%;
+    background-color: #03a9f4a6;
+    padding: 10px 8px 6px 10px;
+    border-radius: 25px;
+}
+
+.submitbtn:hover {
+    background-color: #03A9F4;
+    cursor:pointer;
 }
 
 .caption {
@@ -33,6 +45,11 @@ h1 {
     text-overflow: ellipsis;
     height: 74px;
 }
+
+.caption ul {
+	position: inherit!important;
+}
+    
 
 .thumbnail > img {
     display: block;

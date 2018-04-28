@@ -135,15 +135,17 @@ layui.use('laypage', function(){
             dataType : 'json',
             success : function(data) {
                 layer.msg("发表成功！");
-                setTimeout(() => {
-                    window.location.reload();
-                }, 1000);
+                setTimeout(reloadWindow, 1000);
             },
             error: function(XMLHttpRequest, textStatus, errorThrown) {
                 layer.msg(XMLHttpRequest.responseText);
             }
         });
     });
+    
+    function reloadWindow(){
+        window.location.reload();
+    }
     
     $("#btnSubmitUp").on('click', function(){
         var url = 'api/article/update';
@@ -160,17 +162,18 @@ layui.use('laypage', function(){
             dataType : 'json',
             success : function(data) {
                 layer.msg("修改成功！");
-                setTimeout(() => {
-                    // window.location.reload();
-                    searchPage(currPage);
-                    $('#myUpModal').modal('hide')
-                }, 1000);
+                setTimeout(upSearch, 1000);
             },
             error: function(XMLHttpRequest, textStatus, errorThrown) {
                 layer.msg(XMLHttpRequest.responseText);
             }
         });
     });
+    
+    function upSearch(){
+        searchPage(currPage);
+        $('#myUpModal').modal('hide')
+    }
     
     // 删除文章
     window.delArticle = function (objId){
@@ -183,10 +186,7 @@ layui.use('laypage', function(){
                 success : function(data) {
                     if(data == 0){
                         layer.msg("删除成功！");
-                        setTimeout(() => {
-                            searchPage(currPage);
-                            $('#myUpModal').modal('hide')
-                        }, 1000);
+                        setTimeout(upSearch, 1000);
                     } else {
                         layer.msg("删除失败！");
                     }
