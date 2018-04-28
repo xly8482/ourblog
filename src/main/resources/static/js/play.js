@@ -25,7 +25,7 @@
         
         if(buDirection == 90)
         {
-            if(bfLeft+stepSize < bodyMaxWidth)
+            if(bfLeft+stepSize < rightBoundary)
             {
                 $("#bullet1").offset({top:bfTop,left:bfLeft+stepSize});
             }
@@ -51,7 +51,7 @@
         }
         else if(buDirection == 180)
         {
-            if(bfTop+stepSize < bodyMaxHeight)
+            if(bfTop+stepSize < bottomBoundary)
             {
                 $("#bullet1").offset({top:bfTop+stepSize,left:bfLeft});
             }
@@ -138,7 +138,7 @@
             rotatePlayer(90 - direction);
             direction = 90;
 
-            if (lfLeft + stepSize < bodyMaxWidth) {
+            if (lfLeft + stepSize < rightBoundary) {
                 $("#player1").offset({
                     top : lfTop,
                     left : lfLeft + stepSize
