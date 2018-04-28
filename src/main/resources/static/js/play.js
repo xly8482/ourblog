@@ -1,4 +1,4 @@
-var stepSize = 5;
+    var stepSize = 5;
     var bodyMaxWidth = 600;
     var bodyMaxHeight = 400;
     var canvas;
