@@ -1,6 +1,6 @@
     var stepSize = 5;
-    var bodyMaxWidth = 600;
-    var bodyMaxHeight = 400;
+    var bodyMaxWidth = 800;
+    var bodyMaxHeight = 600;
     var canvas;
     var context;
     var img;
@@ -12,6 +12,11 @@
     var bulletImg;
     var buDirection=0;
     var ifShoot=false;
+    
+    var topBoundary = 130;
+    var leftBoundary = 15;
+    var bottomBoundary = bodyMaxHeight+topBoundary;
+    var rightBoundary = bodyMaxWidth+leftBoundary;
     
     function shoot()
     {
@@ -107,7 +112,7 @@
             rotatePlayer(270 - direction);
             direction = 270;
             
-            if (lfLeft - stepSize > 0) {
+            if (lfLeft - stepSize > leftBoundary) {
                 $("#player1").offset({
                     top : lfTop,
                     left : lfLeft - stepSize
@@ -120,7 +125,7 @@
             rotatePlayer(360 - direction);
             direction = 360;
 
-            if (lfTop - stepSize > 0) {
+            if (lfTop - stepSize > topBoundary) {
                 $("#player1").offset({
                     top : lfTop - stepSize,
                     left : lfLeft
@@ -146,7 +151,7 @@
             rotatePlayer(180 - direction);
             direction = 180;
             
-            if (lfTop + stepSize < bodyMaxHeight) {
+            if (lfTop + stepSize < bottomBoundary) {
                 $("#player1").offset({
                     top : lfTop + stepSize,
                     left : lfLeft
