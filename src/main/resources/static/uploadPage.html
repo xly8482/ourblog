@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorator="layout">
+<html>
+<head>
+<meta charset="UTF-8">
+<title>image identify</title>
+
+<script type="text/javascript">
+	function encodeImage(){
+		
+// 		alert(1);
+		
+	}
+
+</script>
+</head>
+<body>
+		<form action="/api/upload/resource" method="post" enctype="multipart/form-data" onsubmit="return encodeImage();">
+				请选择上传文件：<input type="file" name="file"/>
+			<input type="submit"/>
+		</form>
+</body>
+</html>

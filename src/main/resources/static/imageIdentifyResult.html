@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" layout:decorator="layout">
+<html>
+<head>
+<meta charset="UTF-8">
+<title>image identify</title>
+
+<script type="text/javascript">
+
+</script>
+</head>
+<body>
+	<table>
+		<tr th:each="wordsResult : ${wordsResult}">
+			<td th:text="${wordsResult.words}"></td>
+		</tr>
+	</table>
+</body>
+</html>
