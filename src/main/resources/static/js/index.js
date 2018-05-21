@@ -1,5 +1,5 @@
 var layer = layui.layer;
-var imgMax = 6;
+var imgMax = 3;
 var strArr = [];
 var currPage = 0;
 var editor, editorUp, editorDetail;
