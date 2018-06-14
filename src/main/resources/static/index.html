@@ -13,7 +13,12 @@
 	<div class="container-fluid">
 		<div class="row-fluid">
 			<div class="span12">
-				<h1>我的博客</h1>
+				<h1>
+				我的博客
+				<div class="treeCanvasDiv">
+					<canvas id="scratch" style="width: 200px; height: 65px;"></canvas>
+				</div>
+				</h1>
 				<ul class="nav nav-tabs">
 					<li class="active">
 						<a href="#home" data-toggle="tab">首页</a>
@@ -64,9 +69,9 @@
 						  </fieldset>
 				    </div>  
 				    <div class="tab-pane" id="info">
-			    	 	<div id="palyArea" style="border:1px solid #000;overflow: hidden;">
-							<canvas id="player1" style="width:60;height:60;"></canvas>
-							<canvas id="bullet1" style="width:10;height:10;"></canvas>
+			    	 	<div id="palyArea">
+							<canvas id="player1" style="width:30;height:30;"></canvas>
+							<div id="bulletArea"></div>
 						</div>
 				    </div>  
 				</div>
@@ -144,3 +149,5 @@
 <script src="js/index.js"></script>
 <script src="js/upload.js"></script>
 <script src="js/play.js"></script>
+<script src="js/canTree/verlet-1.0.0.js"></script>
+<script src="js/canTree/tree.js"></script>

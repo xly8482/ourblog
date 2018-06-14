@@ -1,85 +1,87 @@
     var stepSize = 5;
-    var bodyMaxWidth = 800;
-    var bodyMaxHeight = 600;
+    var bodyMaxWidth = $(window).width();
+    var bodyMaxHeight = $(window).height();
     var canvas;
     var context;
     var img;
     var direction=0;
     
-    var shooting;
-    var buCanvas;
+    var shooting = 0;
     var buContext;
     var bulletImg;
-    var buDirection=0;
-    var ifShoot=false;
     
-    var topBoundary = 130;
-    var leftBoundary = 15;
+    var topBoundary = -500;
+    var leftBoundary = -100;
     var bottomBoundary = bodyMaxHeight+topBoundary;
     var rightBoundary = bodyMaxWidth+leftBoundary;
     
-    function shoot()
+    function shoot(bulletId, index, buCanvas, buDirection)
     {
-        var bfLeft = $("#bullet1").offset().left;
-        var bfTop = $("#bullet1").offset().top;
+        if($("#"+bulletId).length <= 0){
+            clearInterval(index);
+            return;
+        }
+        
+        var bfLeft = $("#"+bulletId).offset().left;
+        var bfTop = $("#"+bulletId).offset().top;
         
         if(buDirection == 90)
         {
             if(bfLeft+stepSize < rightBoundary)
             {
-                $("#bullet1").offset({top:bfTop,left:bfLeft+stepSize});
+                $("#"+bulletId).offset({top:bfTop,left:bfLeft+stepSize});
             }
             else
             {
                 buContext.clearRect(0, 0, buCanvas.width, buCanvas.height);
-                ifShoot=false;
-                clearInterval(shooting);
+                $("#bulletArea #"+bulletId).remove();
+                clearInterval(index);
             }
         }
         else if(buDirection == 0 || buDirection == 360)
         {
-            if(bfTop-stepSize > 0)
+            if(bfTop-stepSize > topBoundary)
             {
-                $("#bullet1").offset({top:bfTop-stepSize,left:bfLeft});
+                $("#"+bulletId).offset({top:bfTop-stepSize, left:bfLeft});
             }
             else
             {
                 buContext.clearRect(0, 0, buCanvas.width, buCanvas.height);
-                ifShoot=false;
-                clearInterval(shooting);
+                $("#bulletArea #"+bulletId).remove();
+                clearInterval(index);
             }
         }
         else if(buDirection == 180)
         {
             if(bfTop+stepSize < bottomBoundary)
             {
-                $("#bullet1").offset({top:bfTop+stepSize,left:bfLeft});
+                $("#"+bulletId).offset({top:bfTop+stepSize,left:bfLeft});
             }
             else
             {
                 buContext.clearRect(0, 0, buCanvas.width, buCanvas.height);
-                ifShoot=false;
-                clearInterval(shooting);
+                $("#bulletArea #"+bulletId).remove();
+                clearInterval(index);
             }
         }
         else if(buDirection == 270)
         {
-            if(bfLeft-stepSize > 0)
+            if(bfLeft-stepSize > leftBoundary)
             {
-                $("#bullet1").offset({top:bfTop,left:bfLeft-stepSize});
+                $("#"+bulletId).offset({top:bfTop,left:bfLeft-stepSize});
             }
             else
             {
                 buContext.clearRect(0, 0, buCanvas.width, buCanvas.height);
-                ifShoot=false;
-                clearInterval(shooting);
+                $("#bulletArea #"+bulletId).remove();
+                clearInterval(index);
             }
         }
         else
         {
             buContext.clearRect(0, 0, buCanvas.width, buCanvas.height);
-            ifShoot=false;
-            clearInterval(shooting);
+            $("#bulletArea #"+bulletId).remove();
+            clearInterval(index);
         }
     }
 
@@ -90,20 +92,25 @@
         //发射子弹
         if(event.keyCode == 65 || event.keyCode == 32)
         {
-            if(!ifShoot)
+            if($("#bulletArea").children().length < 10)
             {
-                ifShoot = true;
                 //产生子弹
-                $("#bullet1").offset({top:lfTop,left:lfLeft});
-                buCanvas = document.getElementById("bullet1");
+                shooting++
+                var canId = "bullet" + shooting;
+                $("#bulletArea").append('<canvas id="'+canId+'" style="width:10;height:10;"></canvas>');
+                
+                $("#"+canId).offset({top:lfTop,left:lfLeft});
+                var buCanvas = document.getElementById(canId);
                 buContext = buCanvas.getContext("2d");
                 bulletImg = new Image();
                 bulletImg.src = "img/play/bullet.png";
                 
                 buContext.drawImage(bulletImg, 25, 25, 10, 10);
-                buDirection = direction;
+                var buDirection = direction;
 
-                shooting = setInterval(shoot, 20);
+                var index = setInterval(function(){
+                    shoot(canId, index, buCanvas, buDirection);
+                }, 20);
             }
         }
 
@@ -178,7 +185,10 @@
         img = new Image();
         img.src = "img/play/player.jpg";
         context.drawImage(img, 0, 0, 60, 60);
-
+        
+        bulletImg = new Image();
+        bulletImg.src = "img/play/bullet.png";
+        
         $("#palyArea").css({
             width : bodyMaxWidth + 50,
             height : bodyMaxHeight + 50
