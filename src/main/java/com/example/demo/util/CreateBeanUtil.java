@@ -252,8 +252,8 @@ public class CreateBeanUtil
         return existFile;
     }
 
-    public static void main(String[] args)
-    {
-        createBean("Trade", "com.example.demo.entity", "com.example.demo.dao", "com.example.demo.service");
-    }
+//    public static void main(String[] args)
+//    {
+//        createBean("Trade", "com.example.demo.entity", "com.example.demo.dao", "com.example.demo.service");
+//    }
 }

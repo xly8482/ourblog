@@ -10,8 +10,8 @@
     var buContext;
     var bulletImg;
     
-    var topBoundary = -500;
-    var leftBoundary = -100;
+    var topBoundary = 0;
+    var leftBoundary = 0;
     var bottomBoundary = bodyMaxHeight+topBoundary;
     var rightBoundary = bodyMaxWidth+leftBoundary;
     
@@ -84,8 +84,17 @@
             clearInterval(index);
         }
     }
+    
+    $(document).keypress(function(e) { 
+        if (e.ctrlKey && e.which == 10) 
+            playInit();
+    });
 
     $(document).keydown(function(event){
+        if($("#player1").length <= 0){
+            return;
+        }
+        
         var lfLeft = $("#player1").offset().left;
         var lfTop = $("#player1").offset().top;
         
@@ -179,7 +188,17 @@
         context.drawImage(img, 0, 0, 60, 60);
     }
 
-    $(document).ready(function() {
+    function playInit()
+    {
+        if($('#player1').length <= 0) {
+            $("body").append('<div id="palyArea"><canvas id="player1" style="width:30;height:30;position:fixed;z-index:99999;"></canvas><div id="bulletArea"></div></div>');
+        }
+        
+        // 加载遍历页面所有的元素
+        $(document).find("body").each(function(i, item){
+            console.log(item);
+        });
+        
         canvas = document.getElementById("player1");
         context = canvas.getContext("2d");
         img = new Image();
@@ -190,7 +209,10 @@
         bulletImg.src = "img/play/bullet.png";
         
         $("#palyArea").css({
-            width : bodyMaxWidth + 50,
-            height : bodyMaxHeight + 50
+            overflow: 'hidden',
+            position: 'fixed',
+            top: '0',
+            left: '0',
+            zindex: '9999'
         });
-    });
+    }

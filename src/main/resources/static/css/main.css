@@ -68,15 +68,3 @@ h1 {
 .btn {
     margin: 8px 6px;
 }
-
-#player1 {
-	position: absolute;
-}
-
-#palyArea {
-    overflow: hidden;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: -1;
-}

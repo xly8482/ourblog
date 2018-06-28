@@ -14,4 +14,23 @@ public class ResourceEntity implements Serializable
 
     private Long uploadTime;
 
+    public String getResourceName()
+    {
+        return resourceName;
+    }
+
+    public void setResourceName(String resourceName)
+    {
+        this.resourceName = resourceName;
+    }
+
+    public Long getUploadTime()
+    {
+        return uploadTime;
+    }
+
+    public void setUploadTime(Long uploadTime)
+    {
+        this.uploadTime = uploadTime;
+    }
 }
